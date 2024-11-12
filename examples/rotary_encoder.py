@@ -9,7 +9,7 @@ pin_enc_b = 39
 
 #########################################################################
 # OBJECTS
-rotenc_a = Pin(pin_enc_a, Pin.IN, Pin.PULL_UP)
+rotenc_A = Pin(pin_enc_a, Pin.IN, Pin.PULL_UP)
 rotenc_B = Pin(pin_enc_b, Pin.IN, Pin.PULL_UP)
 
 #########################################################################
@@ -35,7 +35,7 @@ def re_half_step():
         [0x03, 0x03, 0x04, 0x10],
         [0x03, 0x05, 0x03, 0x20]]    
     
-    enc_state = encTableHalfStep[enc_state & 0x0F][(rotenc_B.value() << 1) | rotenc_a.value()]
+    enc_state = encTableHalfStep[enc_state & 0x0F][(rotenc_B.value() << 1) | rotenc_A.value()]
  
     # -1: Left/CCW, 0: No rotation, 1: Right/CW
     result = enc_state & 0x30
@@ -59,7 +59,7 @@ def re_full_step():
         [0x06, 0x05, 0x00, 0x20],
         [0x06, 0x05, 0x04, 0x00]]
 
-    enc_state = encTableFullStep[enc_state & 0x0F][(rotenc_B.value() << 1) | rotenc_a.value()]
+    enc_state = encTableFullStep[enc_state & 0x0F][(rotenc_B.value() << 1) | rotenc_A.value()]
  
     # -1: Left/CCW, 0: No rotation, 1: Right/CW
     result = enc_state & 0x30
