@@ -81,7 +81,7 @@ while True:
     # Direction and counter
     counter += res
 
-    if (res == CW):
+    if res == CW:
         print("Right/CW: %d" % counter)
-    elif (res == CCW):
+    elif res == CCW:
         print("Left/CCW: %d" % counter)
